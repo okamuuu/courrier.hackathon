@@ -1,21 +1,39 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+// import Typography from 'typography'
+// const typography = new Typography({
+//   baseFontSize: '18px',
+//   baseLineHeight: 1.666,
+//   headerFontFamily: ['Avenir Next', 'Helvetica Neue', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
+//   bodyFontFamily: ['Georgia', 'serif'],
+//   // See below for the full list of options.
+// })
+// typography.injectStyles()
 
-export default App;
+import Articles from './Articles'
+
+const App = () => (
+  <Router>
+    <div className="container">
+      <h1 className="text-center" style={{padding: "30px"}}><Link to="/">courrier.jp</Link></h1>
+      <ul className="nav nav-pills" style={{padding: "30px"}}>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/mypage">MyPage</Link></li>
+      </ul>
+      <Route exact path="/" component={Articles.List}/>
+      <Route exact path="/articles" component={Articles.List}/>
+      <Route exact path="/articles/:id" component={Articles.Show}/>
+      <Route exact path="/mypage" component={Articles.MyPage}/>
+      <footer className="footer text-center">
+        <p className="text-muted" style={{padding: "30px"}}>courrier.jp</p>
+      </footer>
+    </div>
+  </Router>
+)
+
+export default App

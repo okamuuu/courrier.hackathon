@@ -7,10 +7,10 @@ module.exports = function() {
 
     articles.push({
       "id": id,
-      "title": faker.lorem.words(),
-      "content": faker.lorem.paragraphs(),
-      "image": faker.image.imageUrl(),
-      "picked": false
+      "post_title": faker.lorem.words(),
+      "post_content": faker.lorem.paragraphs(),
+      "image": { src: [faker.image.imageUrl()] },
+      "pined": false
     })
   }
 
